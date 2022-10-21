@@ -1,3 +1,5 @@
+"""Module with models."""
+
 from django.core.validators import MaxValueValidator
 from django.db import models
 
@@ -5,7 +7,7 @@ BIOLOGY = 'bio'
 MATHS = 'math'
 ECONOMICS = 'eco'
 
-DEPARTMENTS = [
+departments = [
     (BIOLOGY, 'Биология'),
     (MATHS, 'Математика'),
     (ECONOMICS, 'Экономика'),
@@ -13,6 +15,8 @@ DEPARTMENTS = [
 
 
 class Student(models.Model):
+    """Model of student."""
+    
     name = models.CharField(
         max_length=100,
         verbose_name='Имя',
@@ -22,7 +26,7 @@ class Student(models.Model):
         verbose_name='Возраст',
     )
     department = models.CharField(
-        choices=DEPARTMENTS,
+        choices=departments,
         default='eco',
         blank=False,
         null=False,
